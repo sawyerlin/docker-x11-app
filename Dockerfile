@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:14.04
 MAINTAINER Sawyer LIN <sawyer.lin@gmail.com>
 
 RUN apt-get update -y
@@ -6,7 +6,7 @@ RUN apt-get upgrade -y
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get install -y xpra rox-filer openssh-server pwgen xserver-xephyr xdm fluxbox xvfb sudo software-properties-common python-software-properties ffmpeg build-essential libgl1-mesa-dev
+RUN apt-get install -y xpra rox-filer openssh-server pwgen xserver-xephyr xdm fluxbox xvfb sudo software-properties-common python-software-properties build-essential libgl1-mesa-dev
 
 RUN sed -i 's/DisplayManager.requestPort/!DisplayManager.requestPort/g' /etc/X11/xdm/xdm-config
 RUN sed -i '/#any host/c\*' /etc/X11/xdm/Xaccess
@@ -19,3 +19,8 @@ RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/i
 RUN apt-get -y install fuse || :
 RUN rm -rf /var/lib/dpkg/info/fuse.postinst
 RUN apt-get -y install fuse
+
+RUN add-apt-repository ppa:mc3man/trusty-media
+RUN apt-get update
+
+RUN apt-get install gstreamer0.10-ffmpeg gstreamer0.10*

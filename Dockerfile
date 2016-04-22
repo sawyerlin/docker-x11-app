@@ -23,4 +23,4 @@ RUN apt-get -y install fuse
 RUN add-apt-repository ppa:mc3man/trusty-media
 RUN apt-get update
 
-RUN apt-get install gstreamer0.10-ffmpeg gstreamer0.10*
+RUN apt-get install -y gstreamer0.10-ffmpeg gstreamer0.10* pulseaudio

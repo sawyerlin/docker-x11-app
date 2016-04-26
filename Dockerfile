@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Sawyer LIN <sawyer.lin@gmail.com>
 
 RUN apt-get update -y
@@ -20,8 +20,4 @@ RUN apt-get -y install fuse || :
 RUN rm -rf /var/lib/dpkg/info/fuse.postinst
 RUN apt-get -y install fuse
 
-RUN add-apt-repository ppa:mc3man/trusty-media
-RUN apt-get update
-
 RUN apt-get install -y libgstreamer* gstreamer* pulseaudio libfreetype6-dev libx11-dev libxext-dev libxfixes-dev libxi-dev libxrender-dev libx11-xcb-dev libfreetype6-dev
-
